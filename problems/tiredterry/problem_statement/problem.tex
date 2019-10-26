@@ -1,0 +1,28 @@
+\problemname{Tired Terry}
+
+Terry is feeling tired and he suspects it is because of a lack of sleep. 
+He created a device that records his sleeping pattern over a period of 
+time measured in seconds.
+
+Assuming that the recorded sleeping pattern keeps repeating,
+help Terry by letting him know how often he is tired during each of the repeating time periods.
+
+More precisely, for integers $p$ and $d$, we say that Terry is tired
+at second $i$ if from second $i-p+1$ to second $i$ (inclusive) he has
+slept for less than $d$ seconds.
+
+\section*{Input}
+
+The first line of input contains three integers $n$ ($1 \leq n \leq 
+86\,400$), the length of Terry's sleep pattern, $p$ ($1 \leq p \leq n$), 
+and $d$ ($1 \leq d \leq p$) as described above.
+
+The second line of input contains a single string of length $n$ which 
+describes the period of time that is recorded. The $i^\textrm{th}$ such 
+character is a \texttt{W} if Terry is awake at the $i^\textrm{th}$ second, or is 
+a \texttt{Z} if Terry is asleep at the $i^\textrm{th}$ second.
+
+\section*{Output}
+
+Display a single integer which represents the number of seconds that Terry 
+is tired during each of the repeating time periods.

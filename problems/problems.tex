@@ -1,0 +1,141 @@
+% Note: use pdflatex (instead of plain latex) to compile the
+%       problemset, lest things be okay.
+
+\documentclass[letterpaper,11pt,noproblemids]{../problemset}
+
+\usepackage[table]{xcolor}
+\usepackage{url}
+\usepackage{dcolumn}
+% If unnumbered sample I/O is desired, pass option "nosamplenumbers"
+% to the problemset class
+
+\usepackage[final]{pdfpages}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.1in}
+
+\usepackage{graphicx,tikz}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\contestname{ICPC Rocky Mountain Regional Contest 2019}
+\contestshortname{Rocky Mountain Regionals (2019)}
+\headerlogo{../icpc_art/2019/headers/2019-header-nac-RockyMountain_6x.png}
+
+\errorcontextlines 10000
+
+\begin{document}
+
+\includepdf[width=\textwidth]{page.pdf}
+
+
+\thispagestyle{empty}
+\begin{center}
+\vspace*{\fill}
+\includegraphics[width=10cm]{../mountains.png} \\
+
+\textsc{\Huge ICPC ROCKY MOUNTAIN \\[0.3cm] REGIONALS}\\[0.5cm]
+
+\textsc{\Large October 26, 2019}\\[0.3cm]
+
+\HRule \\[0.3cm]
+
+{ \huge \bfseries Contest Problems \\[0.3cm] }
+
+\HRule \\[0.5cm]
+
+{\large
+\begin{tabular}{l@{:\hskip4pt}l}
+A & Piece of Cake! \\
+B & Fantasy Draft \\
+C & Folding a Cube \\
+D & Integer Division \\
+E & Hogwarts \\
+F & Molecules \\
+G & Typo \\
+H & The Biggest Triangle \\
+I & Tired Terry \\
+J & Watch Later \\
+K & Lost Lineup \\
+\end{tabular}
+}
+\vspace*{\fill}
+\end{center}
+
+\clearpage
+
+\begin{center}
+This contest contains 11 problems over 26 pages. Good luck.
+\end{center}
+
+\vskip 20pt
+%For problems that state ``\textit{Your answer should have an absolute or relative error of less than $10^{-9}$}'', your answer, $x$, will be compared to the correct answer, $y$. If $|x-y| < 10^{-9}$ or $\frac{|x-y|}{|y|} < 10^{-9}$, then your answer will be considered correct.
+
+For problems that state ``\textit{Your answer should have an absolute error of less than $10^{-9}$}'', your answer, $x$, will be compared to the correct answer, $y$. If $|x-y| < 10^{-9}$, then your answer will be considered correct.
+
+\vskip 20pt
+\hrule
+\vskip 20pt
+
+\subsection*{Definition 1}
+
+For problems that ask for a result modulo $m$: \\ If the correct answer to the problem is the integer $b$, then you should display the unique value $a$ such that:
+
+
+\begin{itemize}
+\item $0 \leq a < m$
+\end{itemize}
+
+\vskip-10pt
+\hskip30pt and
+
+\begin{itemize}
+\item \vskip-10pt $(a-b)$ is a multiple of $m$.
+\end{itemize}
+
+\vskip 20pt
+\hrule
+\vskip 20pt
+
+\subsection*{Definition 2}
+
+A string $s_1s_2 \cdots s_n$ is lexicographically smaller than $t_1t_2\cdots t_\ell$ if
+
+\begin{itemize}
+\item there exists $k \leq \min(n,\ell)$ such that $s_i = t_i$ for all $1 \leq i < k$ and $s_k < t_k$
+\end{itemize}
+
+\vskip-10pt
+\hskip30pt or
+
+\begin{itemize}
+ \item \vskip-10pt $s_i = t_i$ for all $1 \leq i \leq \min(n,\ell)$ and $n < \ell$.
+\end{itemize}
+
+\vskip 20pt
+\hrule
+\vskip 20pt
+
+\subsection*{Definition 3}
+
+\begin{itemize}
+	\item Uppercase letters are the uppercase English letters ($A, B, \dots , Z$).
+	\item Lowercase letters are the lowercase English letters ($a, b, \dots , z$).
+\end{itemize}
+
+\vskip 20pt
+\hrule
+\vskip 20pt
+
+\includeproblem{pieceofcake2}
+\includeproblem{fantasydraft}
+\includeproblem{foldingacube}
+\includeproblem{integerdivision}
+\includeproblem{hogwarts2}
+\includeproblem{molecules}
+\includeproblem{typo}
+\includeproblem{biggesttriangle}
+\includeproblem{tiredterry}
+\includeproblem{watchlater}
+\includeproblem{lostlineup}
+
+\end{document}

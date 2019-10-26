@@ -1,0 +1,26 @@
+\problemname{The Biggest Triangle}
+
+Three infinite lines define a triangle, unless they meet at a common point or some of them are parallel.
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{triangles.pdf}
+\end{center}
+
+Given a collection of infinite lines, what is the largest possible perimeter of a triangle defined by some three
+lines in the collection?
+
+\section*{Input}
+The first line of input contains a single integer $n$ ($3 \leq n \leq 100$) indicating the number of infinite lines.
+
+The next $n$ lines describe the collection of infinite lines. The $i^{\textrm{th}}$ such line contains four integers 
+$x_1, y_1, x_2, y_2$ ($-10\,000 \leq x_1, y_1, x_2, y_2 \leq 10\,000$) where $(x_1, y_1) \neq (x_2, y_2)$
+are two points lying on the $i^{\textrm{th}}$ infinite line.
+
+\section*{Output}
+Display a single real value which is the perimeter of the largest triangle that can
+be formed from three of the infinite lines. Your output will be considered
+correct if it is within an absolute or relative error of $10^{-5}$ of the
+correct answer.
+
+If no triangle can be formed using the given lines, then you should instead
+display the message \texttt{no triangle}.

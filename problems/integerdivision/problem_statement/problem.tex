@@ -1,0 +1,24 @@
+\problemname{Integer Division}
+
+In \texttt{C++} division with positive integers always rounds down.  Because of this, sometimes when two integers are
+divided by the same divisor they become equal even though they were
+originally not equal. For example in \texttt{C++}, $\verb|5/4|$ and
+$\verb|7/4|$ are both equal to \verb|1|, but $5 \neq 7$.
+
+Given a list of nonnegative integers and a divisor, how many pairs of
+distinct entries in the list are there that give the same result when
+both are divided by the divisor in \texttt{C++}?
+
+\section*{Input}
+
+The first line of input contains two integers $n$ ($1 \leq n \leq 200\,000$), the
+number of elements in the list, and $d$ ($1 \leq d \leq 10^9$), the divisor. 
+
+The second line of input contains $n$ integers $a_1, \ldots, a_n$ ($0 \leq a_i \leq 10^9$),
+where $a_i$ is the $i^\textrm{th}$ element of the list.
+
+\section*{Output}
+Display a single integer indicating the number of distinct pairs of indices $(i,j)$ with 
+$1 \leq i < j \leq n$ such that $a_i / d = a_j / d$ when using integer division
+in \texttt{C++}. Note that the numbers in the list are not necessarily distinct 
+(i.e. it is possible that $a_i = a_j$ for some indices $i \neq j$).

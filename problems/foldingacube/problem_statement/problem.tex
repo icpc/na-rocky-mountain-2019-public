@@ -1,0 +1,35 @@
+\problemname{Folding a Cube}
+
+It is well known that a set of six unit squares
+that are attached together in a ``cross'' can be folded into a cube.
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{folding-1.png}
+\end{center}
+
+But what about other initial shapes? That is, given six
+unit squares that are attached together along some of their sides,
+can we form a unit cube by folding this arrangement?
+
+\section*{Input}
+
+Input consists of $6$ lines each containing $6$ characters, describing
+the initial arrangement of unit squares. Each character is either a \verb|.|,
+meaning it is empty, or a \verb|#| meaning it is a unit square.
+
+There are precisely $6$ occurrences of \verb|#| indicating
+the unit squares. These form a connected component, meaning
+it is possible to reach any \verb|#| from any other \verb|#| without
+touching a \verb|.| by making only horizontal and vertical movements.
+Furthermore, there is no $2 \times 2$ subsquare consisting
+of only \verb|#|. That is, the pattern
+\begin{verbatim}
+##
+##
+\end{verbatim}
+does not appear in the input.
+
+\section*{Output}
+
+If you can fold the unit squares into a cube, display \verb|can fold|.
+Otherwise display \verb|cannot fold|.

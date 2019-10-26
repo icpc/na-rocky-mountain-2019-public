@@ -1,0 +1,210 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+\usetheme{Warsaw}
+% \setbeamercovered{transparent}
+}
+\usepackage{amsmath,amsfonts,array,eepic,graphics}
+%\newcolumntype{d}{D{.}{.}{-1}}
+\usepackage{times}
+%\usepackage[T1]{fontenc}
+\usepackage{subfigure}
+\title[RMRC 2019 Solution Sketches]
+{2019 Rocky Mountain Regional \\ Programming Contest \\ \ \\ Solution Sketches}
+%\author % (optional, use only with lots of authors)
+%{Howard Cheng}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date
+{}
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+% \begin{frame}<beamer>
+% \frametitle{Outline}
+% \tableofcontents[currentsection,currentsubsection]
+% \end{frame}
+%}
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+%\beamerdefaultoverlayspecification{<+->}
+
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+\frametitle{Credits}
+\begin{itemize}
+  \setlength\itemsep{0.5\baselineskip}
+\item Darko Aleksic
+\item Darcy Best
+\item Howard Cheng
+\item Zachary Friggstad
+\item Brandon Fuller
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A - Piece of Cake! (71/71)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item The cake is cut into 4 pieces, pick the one with the maximum length for each side:
+\[ 4 \cdot \max(a, n-a) \cdot \max(b, n-b) \]
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{K - Lost Lineup (67/68)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item $n=1$, answer is $1$
+\item Otherwise, permutation of numbers between $0$ and $n-2$
+\item Sort or find position one by one (small $n$), good enough even if it
+  is $O(n^2)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{D - Integer Division (43/66)}
+\begin{itemize}
+  \setlength\itemsep{0.5\baselineskip}
+\item Too slow to count each pair one at a time
+\item Equivalence classes: count how many elements have the same
+  quotient
+\item If there are $k$ elements with the same quotient, then there
+  are $k(k-1)/2$ pairs with the quotient
+\item You can use a map to count for each quotient, or sort the quotients
+\item Watch out for overflow!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{I - Tired Terry (40/60)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Sliding window of size $p$
+\item Update the count of ``sleep'' as we slide the window: look at
+  the letter entering the window and leaving the window
+\item Easier if input string is duplicated to avoid wraparound
+\item Can be done in linear time.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{B - Fantasy Draft (28/47)}
+\begin{itemize}
+  \setlength\itemsep{0.5\baselineskip}
+\item Just simulate one draft pick at a time\ldots
+\item To do this under the time limit, you cannot afford to search the
+  preference list every time
+\item Use a queue for each team: its preference with the global ranking
+  appended
+\item Keep track of whether a player has been selected or not.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{H - The Biggest Triangle (10/19)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Enumerate all $O(n^3)$ different triples of lines.\\
+For each triple:
+\begin{itemize}
+\item Make sure no two are parallel (or coincide).
+\item Compute the intersections of any two from the triple.
+\item If they are distinct, add the distances between any two of them to get this triangle's perimeter.
+\end{itemize}
+\item Mostly about getting the geometric details right.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{C - Folding a Cube (9/28)}
+\begin{itemize}
+\setlength\itemsep{0.3\baselineskip}
+\item The specification guarantees the six squares form a ``tree''.
+\item So there is a unique way to try folding them into a cube.
+\item For any two distinct \texttt{\#} squares $i,j$ of the input, consider putting a ``test'' cube on square $i$ and rolling it along \texttt{\#} squares to square $j$.
+\begin{itemize}
+\item If this would put the side initially on $i$ face down on $j$, it is impossible to fold the cube.
+\item If this never happens for any $i,j$ pair of \texttt{\#} squares, the folding is possible.
+\end{itemize}
+\item So you have to track a side of the cube as it rolls around.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{G - Typo (5/39)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Just doing naively  it is too slow, the words can be too big.\\
+{\bf Solution}: Hashing with polynomials.
+\item Think of each word $w := c_0c_1\ldots c_{d-1}$ as a polynomial $w(x) := \sum_i c_i \cdot x^i$ where $c_i \equiv$ ASCII value.
+\item Pick a random integer $\overline x$ and compute each polynomial $w(\overline x)$ mod $p$ for a large prime $p$. This is our {\bf hash} of $w$.
+\item Store partial sums $w_j(\overline x) := \sum_{i \leq j} c_i \cdot {\overline x}^i$ mod $p$ and also the inverse of $\overline x$ mod $p$.
+\item Using arithmetic tricks, we can then compute the hash of $w$ if we remove any single character $c_i$ in $O(1)$ time.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{G - Typo (5/39)}
+\begin{itemize}
+\item {\bf Algorithm}\\
+\begin{itemize}
+\item Store the hash of each dictionary word $w$ in an set.
+\item Try removing each $c_i$ from each word $w$ in the dictionary, if its hash was one stored in the last step, $w$ is {\bf probably a typo}.
+\end{itemize}
+\item Since you have to output each typo anyway, you can also spend the time verifying it is indeed a typo (i.e. do the string checking if you see a hit).
+\item Can prove the {\bf expected} running time is $O(\texttt{input size})$.
+\item {\bf Why does this work?} Distinct polynomials of degree $< d$ will agree in at most $d$ points even if we work mod $p$. So the probability of distinct strings of length $\leq d$ hashing to the same value is $\leq d/p$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{E - Hogwarts (4/6)}
+\begin{itemize}
+  \setlength\itemsep{0.5\baselineskip}
+\item You can do a simulatenous traversal on the two graphs, starting
+  at the entrace at both graphs
+\item Follow the corresponding edges and keep track of the pair of rooms
+  you are in for each graph
+\item If we ever arrive at a node such that the first component is the
+  dormitory and the second component is not, the answer is no.
+\item Any graph traversal (e.g. breadth-first search) algorithm would work.
+\item Another view: both graphs are finite automaton.  Is the language of
+  the first automaton a subset of the other one?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{F - Molecules (2/4)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item System of $2n$ equations with $2n$ unknowns: the $x$ and $y$ values of the points that are not fixed equal the average of their neighbours.
+\item Can prove there is a unique solution, given the assumption the molecule is connected and has at least one fixed point.
+\item Alternatively, just simulate.\\
+Place the unfixed points somewhere. Repeatedly, for each point compute the average of its neighbours and move {\em halfway} there.
+Converges close enough after a few thousand iterations (can prove this too).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{J - Watch Later (1/23)}
+\begin{itemize}
+  \setlength\itemsep{0.5\baselineskip}
+\item Need to determine the order of types of video to watch.
+\item Once the order is fixed, the number of clicks to watch a particular
+  type is the number of ``chunks'' of that type
+\item Use dynamic programming $O(2^n)$ states: what is the subset
+  of types watched so far
+\item To be fast enough, need to be efficient in determining the number
+  of chunks (can be done in linear time).
+\end{itemize}
+\end{frame}
+
+\end{document}
